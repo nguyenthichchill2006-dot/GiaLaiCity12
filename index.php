@@ -169,48 +169,81 @@
 </section>
 
 <section class="video-gallery-section container">
+
     <div class="section-heading">
-        <h3>Video & Thư viện</h3>
-        <a href="#" class="link-all">Xem tất cả &rarr;</a>
+        <h2>🎥 Video & Thư viện</h2>
+        <a href="videos.php" class="link-all">
+            Xem tất cả →
+        </a>
     </div>
-    
+
     <div class="grid-video-gallery">
+
         <div class="video-card">
-            <div class="video-thumb-wrapper">
-                <img src="images/video1.jpg" alt="Gia Lai - Vùng đất huyền thoại">
-                <div class="play-btn-overlay"><i class="fa-solid fa-circle-play"></i></div>
+            <div class="video-thumb">
+                <img src="images/nuiluachudangya.jpg" alt="Núi lửa Chư Đăng Ya">
+
+                <a href="https://www.youtube.com/watch?v=8feQPRRPExg"
+                    target="_blank"
+                    class="play-btn">
+
+                    <i class="fa-solid fa-play"></i>
+                </a>
             </div>
-            <p class="video-caption">Gia Lai - Vùng đất huyền thoại</p>
+
+            <div class="video-content">
+                <h4>Núi lửa Chư Đăng Ya</h4>
+                <p>Điểm đến nổi tiếng của Gia Lai với vẻ đẹp thiên nhiên hùng vĩ.</p>
+            </div>
         </div>
+
         <div class="video-card">
-            <div class="video-thumb-wrapper">
-                <img src="images/video2.jpg" alt="Cồng chiêng Tây Nguyên">
-                <div class="play-btn-overlay"><i class="fa-solid fa-circle-play"></i></div>
+            <div class="video-thumb">
+                <img src="img/bienho.png" alt="Biển Hồ Pleiku">
+
+                <a href="https://www.youtube.com/watch?v=IPnmQkohTac" target="_blank" class="play-btn">
+                    <i class="fa-solid fa-play"></i>
+                </a>
             </div>
-            <p class="video-caption">Cồng chiêng Tây Nguyên</p>
+
+            <div class="video-content">
+                <h4>Biển Hồ Pleiku</h4>
+                <p>Đôi mắt Pleiku với làn nước xanh quanh năm.</p>
+            </div>
         </div>
+
         <div class="video-card">
-            <div class="video-thumb-wrapper">
-                <img src="images/video3.jpg" alt="Lễ hội đua thuyền">
-                <div class="play-btn-overlay"><i class="fa-solid fa-circle-play"></i></div>
+            <div class="video-thumb">
+                <img src="img/thacphucuong.jpg" alt="Thác Phú Cường">
+
+                <a href="https://www.youtube.com/watch?v=DK8EHYMVRKI" target="_blank" class="play-btn">
+                    <i class="fa-solid fa-play"></i>
+                </a>
             </div>
-            <p class="video-caption">Lễ hội đua thuyền trên sông Pô Cô</p>
+
+            <div class="video-content">
+                <h4>Thác Phú Cường</h4>
+                <p>Một trong những ngọn thác đẹp nhất Tây Nguyên.</p>
+            </div>
         </div>
+
         <div class="video-card">
-            <div class="video-thumb-wrapper">
-                <img src="images/video4.jpg" alt="Ẩm thực">
-                <div class="play-btn-overlay"><i class="fa-solid fa-circle-play"></i></div>
+            <div class="video-thumb">
+                <img src="img/bienqn.jpg" alt="Không gian cồng chiêng">
+
+                <a href="https://www.youtube.com/watch?v=CKIUpDn39no" target="_blank" class="play-btn">
+                    <i class="fa-solid fa-play"></i>
+                </a>
             </div>
-            <p class="video-caption">Ẩm thực Gia Lai</p>
-        </div>
-        <div class="video-card">
-            <div class="video-thumb-wrapper">
-                <img src="images/video5.jpg" alt="Khám phá">
-                <div class="play-btn-overlay"><i class="fa-solid fa-circle-play"></i></div>
+
+            <div class="video-content">
+                <h4>QUY NHƠN</h4>
+                <p>Vẻ đẹp thiên nhiên và văn hóa độc đáo của thành phố biển này.</p>
             </div>
-            <p class="video-caption">Những nẻo đường khám phá</p>
         </div>
+
     </div>
+
 </section>
 
 <div class="floating-action-buttons">

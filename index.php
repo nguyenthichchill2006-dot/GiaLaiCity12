@@ -214,8 +214,8 @@
 </section>
 
 <div class="floating-action-buttons">
-    <a href="#" class="float-btn zalo-color" title="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
-    <a href="#" class="float-btn messenger-color" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+    <a href="chat.php" class="float-btn zalo-color" title="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+    <a href="https://www.facebook.com/messages/t/1065790793288697/" class="float-btn messenger-color" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
     <a href="#" class="float-btn scroll-top-btn" title="Lên đầu trang"><i class="fa-solid fa-arrow-up"></i></a>
 </div>
 

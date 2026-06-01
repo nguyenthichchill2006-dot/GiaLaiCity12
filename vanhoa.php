@@ -1,95 +1,241 @@
-<?php 
-// 1. Kết nối cơ sở dữ liệu
-$conn = mysqli_connect("localhost", "root", "", "gialai");
-mysqli_set_charset($conn, "utf8mb4");
-
-// 2. Tải thanh Header
-include 'header.php'; 
-
-// 3. Lấy loại văn hóa từ URL
-$type = isset($_GET['type']) ? $_GET['type'] : '';
+<?php  
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include('header.php');
+$page_title = "Ẩm Thực - Văn Hóa Gia Lai";
 ?>
 
-<link rel="stylesheet" href="culture.css">
-
-<div class="container" style="margin-top: 30px; min-height: 80vh; padding: 0 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $page_title ?></title>
     
-    <?php if($type == ''): ?>
-        <div class="culture-banner">
-            <div>
-                <h1 style="font-size: 36px; font-weight: 700; margin-bottom: 10px;">DI SẢN VĂN HÓA GIA LAI</h1>
-                <p style="font-size: 16px; font-weight: 300;">Nơi hội tụ hào khí đại ngàn Tây Nguyên và tinh hoa đất võ Bình Định</p>
-            </div>
-        </div>
-        
-        <div class="category-wrapper">
-            <div class="category-box">
-                <img src="images/gialai.jpg" alt="Gia Lai cũ">
-                <h3 style="color: #1b4d3e; margin-top: 15px; font-weight: 600;">Văn Hóa Gia Lai Cũ (Thuần Tây Nguyên)</h3>
-                <p style="color: #666; font-size: 14px; min-height: 60px; line-height: 1.6;">Tìm hiểu về không gian văn hóa cồng chiêng, kiến trúc nhà rông, sử thi cổ đại và các lễ hội đâm trâu, bỏ mả lâu đời của đồng bào Jrai, Ba Na...</p>
-                <a href="vanhoa.php?type=cu" class="category-btn">Khám phá ngay</a>
-            </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-            <div class="category-box">
-                <img src="images/binhdinh.jpg" alt="Gia Lai mới">
-                <h3 style="color: #1b4d3e; margin-top: 15px; font-weight: 600;">Văn Hóa Gia Lai Mới (Giao Thoa Bình Định)</h3>
-                <p style="color: #666; font-size: 14px; min-height: 60px; line-height: 1.6;">Khám phá dòng chảy văn hóa thầm lặng từ đất võ Bình Định lên cao nguyên: những ngôi làng Kinh định cư mới, điệu nghệ thuật Bài Chòi và nét ẩm thực độc đáo...</p>
-                <a href="vanhoa.php?type=moi" class="category-btn">Khám phá ngay</a>
-            </div>
-        </div>
-
-    <?php else: 
-        // ĐỒNG BỘ TIÊU ĐỀ DANH MỤC
-        $category_title = ($type == 'cu') ? 'Văn Hóa Gia Lai Cũ (Thuần Tây Nguyên)' : 'Văn Hóa Gia Lai Mới (Giao Thoa Bình Định)';
-        
-        // TRUY VẤN THÔNG MINH: Quét cả chuỗi viết tắt lẫn chuỗi tiếng Việt dài để không bỏ sót dữ liệu cũ
-        if ($type == 'cu') {
-            $query = "SELECT * FROM cultural_posts WHERE (category = 'cu' OR category = 'Văn hóa Gia Lai Cũ (Thuần Tây Nguyên)') ORDER BY id DESC";
-        } else {
-            $query = "SELECT * FROM cultural_posts WHERE (category = 'moi' OR category = 'Văn hóa Gia Lai Mới (Giao thoa Bình Định)') ORDER BY id DESC";
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #0f0f0f;
+            color: #ddd;
         }
-        $result = mysqli_query($conn, $query);
-    ?>
-        <a href="vanhoa.php" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Quay lại danh mục văn hóa</a>
-        <h2 class="culture-title"><?php echo $category_title; ?></h2>
-        <p style="color: #666; margin-bottom: 30px;">Tổng hợp những nét văn hóa, di sản phi vật thể và nếp sống đặc trưng qua từng thời kỳ.</p>
-        
-        <div class="culture-grid">
-            <?php 
-            if(mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $date = date('d/m/Y', strtotime($row['created_at']));
-                    
-                    // LÔGIC SỬA LỖI ĐƯỜNG DẪN ẢNH:
-                    // Nếu chuỗi trong DB chưa có tiền tố "images/", ta tự động nối vào để tránh lỗi nhân đôi images/images/
-                    $image_src = $row['image'];
-                    if (!empty($image_src) && strpos($image_src, 'images/') === false) {
-                        $image_src = 'images/' . $image_src;
-                    }
-            ?>
-                    <div class="culture-card">
-                        <img src="<?php echo $image_src; ?>" alt="<?php echo $row['title']; ?>" class="card-img">
-                        <div class="card-body">
-                            <span class="card-date"><i class="fa-regular fa-calendar"></i> Đăng ngày: <?php echo $date; ?></span>
-                            <h3 class="card-title"><?php echo $row['title']; ?></h3>
-                            <p class="card-text"><?php echo $row['summary']; ?></p>
-                            <a href="baiviet.php?slug=<?php echo $row['slug']; ?>" class="readmore-btn">
-                                Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-            <?php 
-                }
-            } else {
-                echo "<p style='grid-column: 1/-1; text-align: center; color: #999; padding: 40px 0;'>Hiện chưa có bài viết nào trong mục này. Chúng tôi sẽ cập nhật sớm!</p>";
-            }
-            ?>
+
+        /* Loại bỏ khoảng trắng thừa */
+        .main-content {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1920x650/003300/ffffff?text=ẨM+THỰC+GIA+LAI') center/cover no-repeat;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            margin-top: -1px; /* Fix khoảng trắng thừa */
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.78);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            color: #ffd700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+        }
+        .hero p {
+            font-size: 1.45rem;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 102, 0, 0.5);
+        }
+        .card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 24px;
+        }
+        .card h3 {
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+        .tag {
+            background: #004d00;
+            color: #90ee90;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+                .home-btn {
+            text-align: center;
+            margin: 80px 0 60px;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: linear-gradient(135deg, #006600, #1b5e20, #2e7d32);
+            color: white;
+            padding: 18px 55px;
+            font-size: 1.35rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 12px 35px rgba(0, 102, 0, 0.5);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 102, 0, 0.7);
+            background: linear-gradient(135deg, #008000, #2e7d32);
+            color: #ffd700;
+            border-color: #ffd700;
+        }
+
+        .btn-home i {
+            font-size: 1.6rem;
+            transition: all 0.4s ease;
+        }
+
+        .btn-home:hover i {
+            transform: rotate(20deg) scale(1.2);
+        }
+
+        .btn-home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.7s;
+        }
+
+        .btn-home:hover::before {
+            left: 200%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container position-relative">
+        <h1>VĂN HÓA GIA LAI MỚI</h1>
+        <p>Kết hợp tinh hoa Tây Nguyên (Gia Lai) và Duyên hải miền Trung (Bình Định)</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+            <div class="card">
+                <span class="tag">🌿 TÂY NGUYÊN</span>
+                <img src="img/congchieng.jpg" alt="Cồng chiêng" class="w-100">
+                <div class="card-body">
+                    <h2>🎶 Không gian văn hóa Cồng Chiêng</h2>
+                    <p>Cồng chiêng là di sản UNESCO, linh hồn của người Jrai và Bahnar, vang vọng trong từng lễ hội và nghi thức cộng đồng.</p>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
 
-</div>
+        <div class="col-lg-6">
+            <div class="card">
+                <span class="tag">🏠 TÂY NGUYÊN</span>
+                <img src="img/nharong.jpg" alt="Nhà rông">
+                <div class="card-body">
+                    <h2>Nhà Rông - Biểu tượng văn hóa</h2>
+                    <p>Trung tâm sinh hoạt cộng đồng, nơi diễn ra các cuộc họp làng, lễ hội và truyền dạy văn hóa.</p>
+                </div>
+            </div>
+        </div>
 
-<?php 
-// 4. Tải thanh Footer
-include 'footer.php'; 
-?>
+        <div class="col-lg-6">
+            <div class="card">
+                <span class="tag">⚔️ BÌNH ĐỊNH</span>
+                <img src="img/vo77.jpg" alt="Võ Bình Định">
+                <div class="card-body">
+                    <h2>Võ Cổ Truyền Bình Định</h2>
+                    <p>Cái nôi võ thuật Việt Nam với tinh thần thượng võ bất diệt, được gìn giữ qua hàng trăm năm.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <span class="tag">🏯 BÌNH ĐỊNH</span>
+                <img src="img/thapcham.jpg" alt="Tháp Chăm">
+                <div class="card-body">
+                    <h2>Tháp Chăm cổ</h2>
+                    <p>Di tích kiến trúc Champa huyền bí, chứng nhân lịch sử hàng ngàn năm của văn hóa miền Trung.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Nút Trang Chủ -->
+   <div class="home-btn text-center my-5">
+        <a href="index.php" class="btn-home">
+            <i class="fas fa-home"></i>
+            <span>Quay về Trang Chủ</span>
+        </a>
+    </div>
+
+<?php include('footer.php'); ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

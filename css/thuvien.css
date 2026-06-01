@@ -1,0 +1,117 @@
+.video-gallery-section {
+    padding: 50px 0;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #1f3c34;
+}
+
+.link-all {
+    text-decoration: none;
+    font-weight: 600;
+    color: #1f3c34;
+    transition: 0.3s;
+}
+
+.link-all:hover {
+    color: #0d6efd;
+}
+
+
+/* Grid */
+
+.grid-video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+
+/* Card */
+
+.video-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    transition: .35s;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+}
+
+
+/* Thumbnail */
+
+.video-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: .5s;
+}
+
+.video-card:hover .video-thumb img {
+    transform: scale(1.08);
+}
+
+
+/* Play Button */
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 0, 0, .9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+
+/* Content */
+
+.video-content {
+    padding: 18px;
+}
+
+.video-content h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #222;
+}
+
+.video-content p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+    font-size: 14px;
+}

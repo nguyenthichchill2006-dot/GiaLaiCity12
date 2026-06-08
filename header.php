@@ -66,6 +66,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 
                 <ul class="dropdown-menu-list">
     <li>
+        <a href="admin_lienhe.php" class="menu-item <?php echo ($current_page == 'admin_lienhe.php') ? 'active' : ''; ?>">
+            <i class="fa-solid fa-envelope"></i> Quản lý liên hệ
+        </a>
+    </li>
+    <li>
         <a href="admin_add_post.php" class="menu-item <?php echo ($current_page == 'admin_add_post.php') ? 'active' : ''; ?>">
             <i class="fa-solid fa-file-pen"></i> Viết bài văn hóa mới
         </a>

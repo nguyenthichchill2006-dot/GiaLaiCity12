@@ -39,7 +39,7 @@
     <div class="gallery" id="gallery">
         <!-- Item 1 -->
         <div class="gallery-item" data-category="congchieng">
-            <img src="img/nharong.jpg" alt="Cồng chiêng">
+            <img src="img/congchieng.jpg" alt="Cồng chiêng">
             <div class="overlay">
                 <h3>Cồng Chiêng Tây Nguyên</h3>
                 <p>Linh hồn của núi rừng, âm thanh vang vọng qua bao thế hệ.</p>
@@ -52,20 +52,20 @@
 
         <!-- Item 2 -->
         <div class="gallery-item" data-category="lang">
-            <img src="https://source.unsplash.com/800x600/?bahnar,village,highlands" alt="Làng Bahnar">
+            <img src="img/thapchambd.jpg" alt="Tháp Chăm">
             <div class="overlay">
-                <h3>Làng Bahnar Cổ</h3>
-                <p>Nhà rông huyền bí giữa núi rừng xanh ngút ngàn.</p>
+                <h3>Tháp Chăm</h3>
+                <p>Tháp Chăm Bình Định là một dạng kiến trúc tôn giáo mang bản sắc rất riêng của dân tộc Chămpa</p>
                 <div class="tags">
-                    <span class="tag">Kiến Trúc</span>
-                    <span class="tag">Bahnar</span>
+                    <span class="tag">Lịch sử</span>
+                    <span class="tag">Tháp Chămpa</span>
                 </div>
             </div>
         </div>
 
         <!-- Thêm nhiều item hơn -->
         <div class="gallery-item" data-category="cafe">
-            <img src="https://source.unsplash.com/800x600/?coffee,plantation,vietnam" alt="Đồi cà phê">
+            <img src="img/caphe.jpg" alt="Đồi cà phê">
             <div class="overlay">
                 <h3>Đồi Cà Phê Gia Lai</h3>
                 <p>Thiên đường xanh ngút ngàn của cao nguyên.</p>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="gallery-item" data-category="congchieng">
-            <img src="https://source.unsplash.com/800x600/?traditional,dance,highlands" alt="Múa cồng chiêng">
+            <img src="img/vanhoacongchieng.jpg" alt="Múa cồng chiêng">
             <div class="overlay">
                 <h3>Múa Cồng Chiêng</h3>
                 <p>Vũ điệu bất diệt, kết nối con người với thần linh.</p>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="gallery-item" data-category="thiennhien">
-            <img src="https://source.unsplash.com/800x600/?waterfall,gialai,vietnam" alt="Thác nước">
+            <img src="img/thacphucuong.jpg" alt="Thác nước">
             <div class="overlay">
                 <h3>Thác Nước Hùng Vĩ</h3>
                 <p>Sức sống mãnh liệt của đại ngàn Tây Nguyên.</p>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="gallery-item" data-category="lang">
-            <img src="https://source.unsplash.com/800x600/?rong,house,vietnam" alt="Nhà rông">
+            <img src="img/nharong.jpg" alt="Nhà rông">
             <div class="overlay">
                 <h3>Nhà Rông - Linh Hồn Làng</h3>
                 <p>Biểu tượng văn hóa đặc trưng của đồng bào dân tộc.</p>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="gallery-item" data-category="nguoi">
-            <img src="https://source.unsplash.com/800x600/?jarai,people,culture" alt="Người Gia Rai">
+            <img src="img/nguoigiarai.jpg" alt="Người Gia Rai">
             <div class="overlay">
                 <h3>Người Gia Rai</h3>
                 <p>Vẻ đẹp mạnh mẽ, kiêu hãnh của người dân Tây Nguyên.</p>
@@ -111,42 +111,42 @@
         </div>
 
         <div class="gallery-item" data-category="lang">
-            <img src="https://source.unsplash.com/800x600/?highlands,village,traditional" alt="Làng Tây Nguyên">
+            <img src="img/langtaynguyen.jpg" alt="Làng Tây Nguyên">
             <div class="overlay">
                 <h3>Làng Dân Tộc</h3>
                 <p>Bình yên và gần gũi với thiên nhiên.</p>
             </div>
         </div>
 
-        <div class="gallery-item" data-category="cafe">
-            <img src="img/caphe.jpg" alt="Thu hoạch cà phê">
+        <div class="gallery-item" data-category="ngabadinh">
+            <img src="img/ngabadinh.jpg" alt="Ngã Ba Đình">
             <div class="overlay">
-                <h3>Thu Hoạch Cà Phê</h3>
-                <p>Mùa vàng trên cao nguyên đất đỏ bazan.</p>
+                <h3>Ngã Ba Đình</h3>
+                <p>Ngã Ba Đình là một di tích lịch sử quan trọng ở thôn Hy Văn, xã Hoài Sơn, huyện Hoài Nhơn, tỉnh Bình Định. Nơi đây không chỉ gắn liền với các cuộc đấu tranh kiên cường trong thời kỳ kháng chiến chống Pháp và Mỹ, mà còn lưu giữ những câu chuyện bi thương về sự tàn bạo của kẻ thù, và tinh thần đấu tranh bất khuất của người dân địa phương.</p>
             </div>
         </div>
 
         <div class="gallery-item" data-category="thiennhien">
-            <img src="https://source.unsplash.com/800x600/?mountain,forest,highlands" alt="Rừng núi">
+            <img src="img/rungnui.jpg" alt="Rừng núi">
             <div class="overlay">
                 <h3>Rừng Núi Gia Lai</h3>
                 <p>Thiên nhiên nguyên sơ và hùng vĩ.</p>
             </div>
         </div>
 
-        <div class="gallery-item" data-category="congchieng">
-            <img src="https://source.unsplash.com/800x600/?festival,traditional,vietnam" alt="Lễ hội">
+        <div class="gallery-item" data-category="nhonly">
+            <img src="img/nhonly.jpg" alt="Lễ hội">
             <div class="overlay">
-                <h3>Lễ Hội Cồng Chiêng</h3>
-                <p>Không khí sôi động và rực rỡ.</p>
+                <h3>Biển Nhơn Lý</h3>
+                <p>Không khí trong lành và mát mẻ , địa điểm thu hút nhiều khách du lịch</p>
             </div>
         </div>
 
         <div class="gallery-item" data-category="nguoi">
-            <img src="https://source.unsplash.com/800x600/?woman,traditional,costume,highlands" alt="Trang phục">
+            <img src="img/nhonhai.jpg" alt="Du Lịch">
             <div class="overlay">
-                <h3>Trang Phục Dân Tộc</h3>
-                <p>Đẹp rực rỡ, mang đậm bản sắc văn hóa.</p>
+                <h3>Biển Nhơn Hải</h3>
+                <p>Bãi biển thuộc thành phố Quy Nhơn</p>
             </div>
         </div>
     </div>

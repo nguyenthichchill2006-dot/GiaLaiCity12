@@ -1,69 +1,57 @@
 <?php
-// Khởi động Session để ghi nhớ trạng thái đăng nhập của người dùng
+// Khởi động Session
 session_start();
 
-// Gọi file kết nối cơ sở dữ liệu vào
 require_once 'db.php';
 
 $error = '';
 
-// Kiểm tra xem người dùng có bấm nút Đăng nhập chưa
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = trim($_POST['username']); // Đây là email hoặc tên đăng nhập người dùng nhập
+    $username = trim($_POST['username']);
     $password = $_POST['password'];
 
     try {
-        // ==========================================
-        // BƯỚC 1: KIỂM TRA TRONG BẢNG ADMIN TRƯỚC
-        // ==========================================
+        // ==================== KIỂM TRA ADMIN TRƯỚC ====================
         $stmt_admin = $pdo->prepare("SELECT * FROM admin WHERE username = ?");
         $stmt_admin->execute([$username]);
         $admin = $stmt_admin->fetch();
 
-        if ($admin) {
-            // Vì mật khẩu admin trong DB lưu bằng MD5, ta băm MD5 mật khẩu vừa nhập để đối chiếu
-            if (md5($password) === $admin['password']) {
-                // Đăng nhập thành công với tư cách ADMIN
-                $_SESSION['admin_logged'] = true;
-                $_SESSION['admin_name'] = $admin['fullname'];
-                
-                // Đẩy thẳng Admin vào trang quản trị viết bài
-                header("Location: admin_add_post.php");
-                exit();
-            } else {
-                $error = "Mật khẩu Admin chưa chính xác!";
-            }
-        } 
-        
-        // ==========================================
-        // BƯỚC 2: NẾU KHÔNG PHẢI ADMIN, KIỂM TRA BẢNG USERS
-        // ==========================================
-        else {
-            // Tìm kiếm người dùng dựa trên Email
-            $stmt_user = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt_user->execute([$username]);
-            $user = $stmt_user->fetch();
+        if ($admin && md5($password) === $admin['password']) {
+            // Đăng nhập Admin
+            $_SESSION['admin_logged'] = true;
+            $_SESSION['admin_name']   = $admin['fullname'];
 
-            if ($user) {
-                // Kiểm tra xem mật khẩu người dùng (Lưu bằng password_hash)
-                if (password_verify($password, $user['password'])) {
-                    
-                    // Lưu thông tin người dùng vào Session như cũ
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['user_name'] = $user['fullname'];
-                    $_SESSION['user_role'] = $user['role'];
-                    $_SESSION['user_email'] = $user['email'];
+            // Xóa session user để tránh xung đột
+            unset($_SESSION['user_id']);
+            unset($_SESSION['user_name']);
 
-                    // Đăng nhập thành công với tư cách USER, chuyển hướng về trang chủ
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    $error = "Mật khẩu người dùng chưa chính xác!";
-                }
-            } else {
-                $error = "Tài khoản không tồn tại trên hệ thống!";
-            }
+            header("Location: admin_add_post.php");
+            exit();
         }
+
+        // ==================== KIỂM TRA USER ====================
+        $stmt_user = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt_user->execute([$username]);
+        $user = $stmt_user->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            // Đăng nhập User thành công
+            $_SESSION['user_id']    = $user['id'];
+            $_SESSION['user_name']  = $user['fullname'];
+            $_SESSION['user_role']  = $user['role'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_avatar']= $user['avatar'] ?? 'images/default.jpg';
+
+            // Xóa session admin để tránh xung đột
+            unset($_SESSION['admin_logged']);
+            unset($_SESSION['admin_name']);
+
+            header("Location: index.php");
+            exit();
+        } 
+
+        // Nếu không khớp Admin lẫn User
+        $error = "Tài khoản hoặc mật khẩu không chính xác!";
 
     } catch (\PDOException $e) {
         $error = "Lỗi hệ thống: " . $e->getMessage();

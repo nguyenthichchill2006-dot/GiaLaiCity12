@@ -22,9 +22,9 @@
                 <h3>Về chúng tôi</h3>
                 <ul>
                     <li><a href="gioi-thieu.php">&rsaquo; Giới thiệu</a></li>
-                    <li><a href="#">&rsaquo; Sơ đồ website</a></li>
-                    <li><a href="#">&rsaquo; Điều khoản sử dụng</a></li>
-                    <li><a href="#">&rsaquo; Chính sách bảo mật</a></li>
+                    <li><a href="so-do-website.php">&rsaquo; Sơ đồ website</a></li>
+                    <li><a href="dieu-khoan-su-dung.php">&rsaquo; Điều khoản sử dụng</a></li>
+                    <li><a href="chinh-sach-bao-mat.php">&rsaquo; Chính sách bảo mật</a></li>
                 </ul>
             </div>
 

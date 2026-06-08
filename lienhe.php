@@ -6,108 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên Hệ - Văn Hóa Gia Lai</title>
+    <link rel="stylesheet" href = "css/lienhe.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?gialai,mountain') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-        }
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        /* Content */
-        .contact-section {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-info h3 {
-            color: #d4a853;
+        .alert {
+            padding: 14px 18px;
+            border-radius: 8px;
             margin-bottom: 20px;
-            font-size: 24px;
-        }
-        .info-item {
+            font-size: 15px;
             display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
+            align-items: center;
+            gap: 10px;
         }
-        .info-item i {
-            font-size: 22px;
-            color: #d4a853;
-            width: 30px;
+        .alert-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
         }
-
-        /* Form */
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        .form-group textarea {
-            height: 160px;
-            resize: vertical;
-        }
-        button {
-            background: #d4a853;
-            color: white;
-            padding: 14px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: #c4963f;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        .alert-error {
+            background: #fdecea;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
         }
     </style>
 </head>
@@ -163,29 +81,64 @@
             <!-- Form liên hệ -->
             <div class="contact-form">
                 <h3>Gửi tin nhắn cho chúng tôi</h3>
+
+                <?php
+                // Lấy trạng thái và thông báo từ URL (do process_lienhe.php redirect về)
+                $status = isset($_GET['status']) ? $_GET['status'] : '';
+                $msg    = isset($_GET['msg'])    ? htmlspecialchars($_GET['msg'], ENT_QUOTES, 'UTF-8') : '';
+
+                if ($status === 'success' && $msg !== '') {
+                    echo '<div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i> ' . $msg . '
+                          </div>';
+                } elseif ($status === 'error' && $msg !== '') {
+                    echo '<div class="alert alert-error">
+                            <i class="fas fa-exclamation-circle"></i> ' . $msg . '
+                          </div>';
+                }
+
+                // Giữ lại giá trị cũ khi có lỗi để người dùng không phải nhập lại
+                $old = [
+                    'hoten'   => htmlspecialchars($_GET['hoten']   ?? '', ENT_QUOTES, 'UTF-8'),
+                    'email'   => htmlspecialchars($_GET['email']   ?? '', ENT_QUOTES, 'UTF-8'),
+                    'sdt'     => htmlspecialchars($_GET['sdt']     ?? '', ENT_QUOTES, 'UTF-8'),
+                    'tieude'  => htmlspecialchars($_GET['tieude']  ?? '', ENT_QUOTES, 'UTF-8'),
+                    'noidung' => htmlspecialchars($_GET['noidung'] ?? '', ENT_QUOTES, 'UTF-8'),
+                ];
+                ?>
+
+                <?php if ($status !== 'success'): ?>
                 <form action="process_lienhe.php" method="POST">
                     <div class="form-group">
                         <label>Họ và tên <span style="color:red;">*</span></label>
-                        <input type="text" name="hoten" required>
+                        <input type="text" name="hoten" required value="<?= $old['hoten'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Email <span style="color:red;">*</span></label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" required value="<?= $old['email'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại</label>
-                        <input type="tel" name="sdt">
+                        <input type="tel" name="sdt" value="<?= $old['sdt'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Tiêu đề</label>
-                        <input type="text" name="tieude" placeholder="Ví dụ: Hỏi về tour du lịch Pleiku">
+                        <input type="text" name="tieude" placeholder="Ví dụ: Hỏi về tour du lịch Pleiku" value="<?= $old['tieude'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Nội dung <span style="color:red;">*</span></label>
-                        <textarea name="noidung" required placeholder="Nhập nội dung bạn muốn liên hệ..."></textarea>
+                        <textarea name="noidung" required placeholder="Nhập nội dung bạn muốn liên hệ..."><?= $old['noidung'] ?></textarea>
                     </div>
                     <button type="submit">Gửi tin nhắn</button>
                 </form>
+                <?php else: ?>
+                <div style="text-align:center; padding: 30px 0;">
+                    <i class="fas fa-paper-plane" style="font-size:48px; color:#4CAF50; margin-bottom:16px; display:block;"></i>
+                    <a href="lienhe.php" style="display:inline-block; margin-top:12px; padding:10px 24px; background:#4CAF50; color:#fff; border-radius:6px; text-decoration:none;">
+                        Gửi tin nhắn khác
+                    </a>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

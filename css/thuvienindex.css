@@ -111,8 +111,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    /* Nền màu xám nhạt (có thêm chút trong suốt để nhìn hiện đại hơn) */
-    background: rgba(180, 180, 180, 0.8); 
+    background: rgba(255, 255, 255, 0.92);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,14 +120,13 @@
 
 .vg-card:hover .vg-play-btn {
     transform: scale(1.12);
-    /* Nền xám đậm hơn một chút khi rê chuột vào để tạo hiệu ứng */
-    background: rgba(150, 150, 150, 0.9); 
+    background: #fff;
 }
 
 .vg-play-btn i {
-    font-size: 20px;
-    color: #ffffff; /* Icon pause màu trắng */
-    margin-left: 0; /* Đưa về 0 để icon pause nằm ngay chính giữa vòng tròn */
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-left: 2px;
 }
 
 .vg-badge {

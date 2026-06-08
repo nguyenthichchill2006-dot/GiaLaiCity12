@@ -1,0 +1,225 @@
+/* ===== HERO BANNER ===== */
+
+.hero-wrap {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 500%;
+    /* 5 slides × 20% mỗi slide */
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.slide {
+    width: 20%;
+    /* = 100% / 5 slides */
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    animation: zoomKen 8s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-wrap .content {
+    animation: fadeUp 0.9s ease-out both;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient( to top, rgba(5, 3, 1, 0.88) 0%, rgba(5, 3, 1, 0.45) 45%, rgba(5, 3, 1, 0.12) 100%);
+}
+
+
+/* Nội dung chữ */
+
+.hero-wrap .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 52px 56px 80px;
+    z-index: 10;
+}
+
+.hero-wrap .tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4a84b;
+    border: 1px solid rgba(212, 168, 75, 0.5);
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+}
+
+.hero-wrap .hero-title {
+    font-size: 58px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 10px;
+    line-height: 1.05;
+}
+
+.hero-wrap .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0 0 6px;
+}
+
+.hero-wrap .hero-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 26px;
+}
+
+.hero-wrap .btn-primary {
+    display: inline-block;
+    background: #d4a84b;
+    color: #1a0a02;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 32px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.hero-wrap .btn-primary:hover {
+    background: #e8bf6a;
+    transform: translateY(-2px);
+}
+
+
+/* Dots */
+
+.hero-wrap .dots {
+    position: absolute;
+    bottom: 28px;
+    left: 56px;
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+}
+
+.hero-wrap .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: background 0.3s, width 0.3s;
+}
+
+.hero-wrap .dot.active {
+    background: #d4a84b;
+    width: 24px;
+    border-radius: 4px;
+}
+
+
+/* Arrows */
+
+.hero-wrap .arrows {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+
+.hero-wrap .arrow-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: rgba(0, 0, 0, 0.32);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.hero-wrap .arrow-btn:hover {
+    background: rgba(212, 168, 75, 0.35);
+    border-color: #d4a84b;
+}
+
+
+/* Ken Burns zoom */
+
+@keyframes zoomKen {
+    0% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero-wrap {
+        height: 420px;
+    }
+    .hero-wrap .content {
+        padding: 32px 24px 80px;
+    }
+    .hero-wrap .hero-title {
+        font-size: 36px;
+    }
+    .hero-wrap .dots {
+        left: 24px;
+    }
+    .hero-wrap .arrows {
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-wrap {
+        height: 360px;
+    }
+    .hero-wrap .hero-title {
+        font-size: 28px;
+    }
+    .hero-wrap .hero-desc {
+        display: none;
+    }
+}

@@ -27,16 +27,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="top-bar">
             <div class="container top-bar-wrapper">
                 <div class="top-bar-left">
-                    <span><i class="fa-solid fa-person-shelter"></i> Chào mừng đến với Văn hóa Gia Lai</span>
-                    <a href="mailto:vanhoagialai@gmail.com"><i class="fa-solid fa-envelope"></i> vanhoagialai@gmail.com</a>
-                    <a href="tel:02691234567"><i class="fa-solid fa-phone"></i> 0269 123 4567</a>
+                    
                 </div>
                 <div class="top-bar-right">
                     <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61574346975994"><i class="fa-brands fa-facebook"></i></a>
+                    
                     </div>
                     <div class="language-select">
                         <img src="images/co.jpg" alt="VN" class="flag-icon"> Tiếng Việt <i class="fa-solid fa-chevron-down"></i>
@@ -221,31 +217,27 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="<?php echo ($current_page == 'diemden.php') ? 'active' : ''; ?>">
+                        <a href="diadiem.php" class="<?php echo ($current_page == 'diadiem.php') ? 'active' : ''; ?>">
                             Điểm đến <i class="fa-solid fa-chevron-down"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="<?php echo ($current_page == 'lehoi.php') ? 'active' : ''; ?>">Lễ hội</a>
+                        <a href="lehoi.php" class="<?php echo ($current_page == 'lehoi.php') ? 'active' : ''; ?>">Lễ hội</a>
                     </li>
                     <li>
-                        <a href="#" class="<?php echo ($current_page == 'amthuc.php') ? 'active' : ''; ?>">Ẩm thực</a>
+                        <a href="amthuc.php" class="<?php echo ($current_page == 'amthuc.php') ? 'active' : ''; ?>">Ẩm thực</a>
+                    </li>
+                    
+                    <li>
+                        <a href="tintuc.php" class="<?php echo ($current_page == 'tintuc.php') ? 'active' : ''; ?>">Tin tức</a>
                     </li>
                     <li>
-                        <a href="#" class="<?php echo ($current_page == 'luutru.php') ? 'active' : ''; ?>">Lưu trú</a>
+                        <a href="thuvien.php" class="<?php echo ($current_page == 'thuvien.php') ? 'active' : ''; ?>">Thư viện</a>
                     </li>
                     <li>
-                        <a href="#" class="<?php echo ($current_page == 'tintuc.php') ? 'active' : ''; ?>">Tin tức</a>
+                        <a href="lienhe.php" class="<?php echo ($current_page == 'lienhe.php') ? 'active' : ''; ?>">Liên hệ</a>
                     </li>
-                    <li>
-                        <a href="#" class="<?php echo ($current_page == 'thuvien.php') ? 'active' : ''; ?>">Thư viện</a>
-                    </li>
-                    <li>
-                        <a href="#" class="<?php echo ($current_page == 'lienhe.php') ? 'active' : ''; ?>">Liên hệ</a>
-                    </li>
-                    <li>
-                        <a href="#" class="search-icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>

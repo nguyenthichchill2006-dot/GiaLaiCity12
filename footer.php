@@ -21,7 +21,7 @@
             <div class="footer-col links-col">
                 <h3>Về chúng tôi</h3>
                 <ul>
-                    <li><a href="#">&rsaquo; Giới thiệu</a></li>
+                    <li><a href="gioi-thieu.php">&rsaquo; Giới thiệu</a></li>
                     <li><a href="#">&rsaquo; Sơ đồ website</a></li>
                     <li><a href="#">&rsaquo; Điều khoản sử dụng</a></li>
                     <li><a href="#">&rsaquo; Chính sách bảo mật</a></li>

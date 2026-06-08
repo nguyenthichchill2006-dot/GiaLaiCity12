@@ -59,7 +59,7 @@
       <div class="fc fc--tall">
         <div class="fc-img-wrap">
           <img
-            src="images/pho-kho-gia-lai.jpg"
+            src="img/phokho.jpg"
             alt="Phở khô Gia Lai"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="fc-img-ph" style="display:none;">
@@ -84,7 +84,7 @@
       <div class="fc fc--tall">
         <div class="fc-img-wrap">
           <img
-            src="images/ga-nuong-com-lam.jpg"
+            src="img/ga.jpg"
             alt="Gà nướng cơm lam"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="fc-img-ph" style="display:none;">
@@ -114,7 +114,7 @@
       <div class="fc fc--reg">
         <div class="fc-img-wrap">
           <img
-            src="images/bo-mot-nang.jpg"
+            src="img/bo.jpg"
             alt="Bò một nắng Gia Lai"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="fc-img-ph" style="display:none;">
@@ -139,7 +139,7 @@
       <div class="fc fc--reg">
         <div class="fc-img-wrap">
           <img
-            src="images/ruou-can.jpg"
+            src="img/ruou.jpg"
             alt="Rượu cần Tây Nguyên"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="fc-img-ph" style="display:none;">

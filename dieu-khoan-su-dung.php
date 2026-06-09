@@ -1,4 +1,7 @@
+<?php include 'header.php'; ?>
+
 <?php
+
 $page_title = "Điều khoản sử dụng";
 $page_active = "dieu-khoan-su-dung";
 $updated_date = "01/06/2025";

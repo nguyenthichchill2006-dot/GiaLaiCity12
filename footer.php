@@ -31,10 +31,10 @@
             <div class="footer-col links-col">
                 <h3>Hỗ trợ</h3>
                 <ul>
-                    <li><a href="#">&rsaquo; Hướng dẫn sử dụng</a></li>
-                    <li><a href="#">&rsaquo; Câu hỏi thường gặp</a></li>
-                    <li><a href="#">&rsaquo; Liên hệ</a></li>
-                    <li><a href="#">&rsaquo; Góp ý</a></li>
+                    <li><a href="huong-dan-su-dung.php">&rsaquo; Hướng dẫn sử dụng</a></li>
+                    <li><a href="cau-hoi-thuong-gap.php">&rsaquo; Câu hỏi thường gặp</a></li>
+                    <li><a href="lien-he.php">&rsaquo; Liên hệ</a></li>
+                    <li><a href="gop-y.php">&rsaquo; Góp ý</a></li>
                 </ul>
             </div>
 
